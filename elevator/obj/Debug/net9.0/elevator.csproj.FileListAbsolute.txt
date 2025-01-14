@@ -1,0 +1,14 @@
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/bin/Debug/net9.0/elevator
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/bin/Debug/net9.0/elevator.deps.json
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/bin/Debug/net9.0/elevator.runtimeconfig.json
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/bin/Debug/net9.0/elevator.dll
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/bin/Debug/net9.0/elevator.pdb
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.AssemblyInfoInputs.cache
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.AssemblyInfo.cs
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.csproj.CoreCompileInputs.cache
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.dll
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/refint/elevator.dll
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.pdb
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.genruntimeconfig.cache
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/ref/elevator.dll
