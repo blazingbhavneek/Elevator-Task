@@ -69,14 +69,15 @@ namespace Elevator{
             }
 
             for(int i=1; i<=this.numFloors; i++){
-                Console.Write(i);
-                if(floors[i].isTarget) Console.Write("-t");
-                if(floors[i].up) Console.Write("-u");
-                if(floors[i].down) Console.Write("-d");
-                if(elevator.currentFloor==i) Console.Write("-e");
+                if(elevator.currentFloor==i) Console.Write("e");
+                else if(floors[i].isTarget) Console.Write("t");
+                else if(floors[i].up) Console.Write("u");
+                else if(floors[i].down) Console.Write("d");
+                else Console.Write(i);
                 Console.Write(", ");
             }
             Console.WriteLine("");
+
 
             if(elevator.dirUp){
                 if(floors[elevator.currentFloor].up){
@@ -152,7 +153,7 @@ namespace Elevator{
             Console.WriteLine("");
         }
         static void Main(string[] args){
-            Building building = new Building(5);  // Example with 5 floors
+            Building building = new Building(10);  // Example with 5 floors
 
             Timer timer = new Timer(_ => building.next(), null, 0, 3000);  // Run every 1 second
 
