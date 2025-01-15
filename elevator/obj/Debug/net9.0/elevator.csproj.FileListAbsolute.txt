@@ -12,3 +12,4 @@
 /Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.pdb
 /Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.genruntimeconfig.cache
 /Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/ref/elevator.dll
+/Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.sourcelink.json

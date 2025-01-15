@@ -59,7 +59,7 @@ namespace Elevator{
         }
 
         public void next(){
-            Console.WriteLine(elevator.currentFloor + " " + elevator.dirUp);
+            // Console.WriteLine(elevator.currentFloor + " " + elevator.dirUp);
 
             int nxtReq = randomReq.Next(1, this.numFloors+1);
             if(nxtReq!=elevator.currentFloor){
@@ -68,24 +68,12 @@ namespace Elevator{
                 if(nxtReq!=this.numFloors) floors[nxtReq].up = true;
             }
 
-            Console.Write("Target: ");
             for(int i=1; i<=this.numFloors; i++){
-                if(floors[i].isTarget || floors[i].up || floors[i].down){
-                    Console.Write(i);
-                }
-
-                if(floors[i].isTarget){
-                    Console.Write("-t");
-                }
-
-                if(floors[i].up){
-                    Console.Write("-u");
-                }
-
-                if(floors[i].down){
-                    Console.Write("-d");
-                }
-
+                Console.Write(i);
+                if(floors[i].isTarget) Console.Write("-t");
+                if(floors[i].up) Console.Write("-u");
+                if(floors[i].down) Console.Write("-d");
+                if(elevator.currentFloor==i) Console.Write("-e");
                 Console.Write(", ");
             }
             Console.WriteLine("");
@@ -113,7 +101,7 @@ namespace Elevator{
 
                 bool nextUp = false;
                 for(int i=elevator.currentFloor+1; i<=numFloors; i++){
-                    if(floors[i].up){
+                    if(floors[i].up || floors[i].down || floors[i].isTarget){
                         elevator.currentFloor++;
                         // Console.WriteLine("Elevator Moves to floor: " + elevator.currentFloor);
                         nextUp = true;
@@ -147,7 +135,7 @@ namespace Elevator{
 
                 bool nextDown = false;
                 for(int i=elevator.currentFloor-1; i>=1; i--){
-                    if(floors[i].down){
+                    if(floors[i].up || floors[i].down || floors[i].isTarget){
                         elevator.currentFloor--;
                         // Console.WriteLine("Elevator Moves to floor: " + elevator.currentFloor);
                         nextDown = true;
@@ -159,8 +147,8 @@ namespace Elevator{
                 }
             }
             
-            Console.WriteLine(elevator.currentFloor + " " + elevator.dirUp);
-            Console.WriteLine("");
+            // Console.WriteLine(elevator.currentFloor + " " + elevator.dirUp);
+            // Console.WriteLine("");
             Console.WriteLine("");
         }
         static void Main(string[] args){
