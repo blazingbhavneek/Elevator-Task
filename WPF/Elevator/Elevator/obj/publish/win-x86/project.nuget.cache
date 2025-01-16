@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "3iaR40gEURQ=",
+  "success": true,
+  "projectFilePath": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\Elevator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sekkei23\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.12\\microsoft.net.illink.tasks.8.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

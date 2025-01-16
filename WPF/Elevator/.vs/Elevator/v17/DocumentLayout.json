@@ -22,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Elevator\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Elevator\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAEwBQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T04:30:04.902Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -32,22 +45,9 @@
               "RelativeDocumentMoniker": "Elevator\\Building.cs",
               "ToolTip": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\Building.cs",
               "RelativeToolTip": "Elevator\\Building.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAcwEAAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-16T04:33:29.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Elevator\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\MainWindow.xaml.cs*",
-              "RelativeToolTip": "Elevator\\MainWindow.xaml.cs*",
-              "ViewState": "AgIAADoAAAAAAAAAAAAQwEgAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T04:30:04.902Z",
               "EditorCaption": ""
             },
             {

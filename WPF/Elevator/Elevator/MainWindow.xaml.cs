@@ -18,33 +18,30 @@ namespace Elevator
     /// </summary>
     public partial class MainWindow : Window
     {
-        Building building;
-        private DispatcherTimer elevatorTimer;
-        private DispatcherTimer displayTimer;
-        public MainWindow()
+        Building building1;
+        Building building2;
+        private void Runner(Building building, StackPanel floorPanel, Label currDir, Label currFloor)
         {
-            InitializeComponent();
-            building = new Building(6);
-            elevatorTimer = new DispatcherTimer
-                {
-                    Interval = TimeSpan.FromSeconds(1)
-                };
+            DispatcherTimer elevatorTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             elevatorTimer.Tick += (s, e) => building.Next();
             elevatorTimer.Start();
 
-            displayTimer = new DispatcherTimer
-                {
-                    Interval = TimeSpan.FromMilliseconds(200)
-                };
+            DispatcherTimer displayTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(200)
+            };
             displayTimer.Tick += (s, e) =>
             {
                 bool dirDisp = false;
                 for (int i = 1; i <= 6; i++)
                 {
-                    if (this.building.floors[i].isTarget)
+                    var childStackPanel = floorPanel.Children[6 - i] as StackPanel;
+                    if (building.floors[i].isTarget)
                     {
                         dirDisp = true;
-                        var childStackPanel = floorPanel.Children[6-i] as StackPanel;
                         if (childStackPanel != null && childStackPanel.Children.Count > 1)
                         {
                             var label = childStackPanel.Children[1] as Label;
@@ -57,7 +54,6 @@ namespace Elevator
 
                     else
                     {
-                        var childStackPanel = floorPanel.Children[6-i] as StackPanel;
                         if (childStackPanel != null && childStackPanel.Children.Count > 1)
                         {
                             var label = childStackPanel.Children[1] as Label;
@@ -69,38 +65,48 @@ namespace Elevator
                     }
                 }
 
-                if(dirDisp && this.building.elevator.dirUp) currDir.Content = "↑";
-                else if(dirDisp && !this.building.elevator.dirUp) currDir.Content = "↓";
+                if (dirDisp && building.elevator.dirUp) currDir.Content = "↑";
+                else if (dirDisp && !building.elevator.dirUp) currDir.Content = "↓";
                 else currDir.Content = "";
                 currFloor.Content = building.elevator.currentFloor.ToString();
-                switch (building.elevator.currentFloor)
+
+                var childPanel = floorPanel.Children[6 - building.elevator.currentFloor] as StackPanel;
+                if (childPanel != null && childPanel.Children.Count > 1)
                 {
-                    case 1:
-                        I1.Background = Brushes.Green; break;
-                    case 2:
-                        I2.Background = Brushes.Green; break;
-                    case 3:
-                        I3.Background = Brushes.Green; break;
-                    case 4:
-                        I4.Background = Brushes.Green; break;
-                    case 5:
-                        I5.Background = Brushes.Green; break;
-                    case 6:
-                        I6.Background = Brushes.Green; break;
-                    default:
-                        break;
+                    var label = childPanel.Children[1] as Label;
+                    if (label != null)
+                    {
+                        label.Background = Brushes.Green;
+                    }
                 }
+
             };
             displayTimer.Start();
 
         }
+        public MainWindow()
+        {
+            InitializeComponent();
+            building1 = new Building(6);
+            building2 = new Building(6);
+            Runner(building1, floorPanel, currDir, currFloor);
+            Runner(building2, floorPanel2, currDir2, currFloor2);
+        }
 
-        private void B6_Click(object sender, RoutedEventArgs e) { this.building.HandleKeyPress(6); }
-        private void B5_Click(object sender, RoutedEventArgs e) { this.building.HandleKeyPress(5); }
-        private void B4_Click(object sender, RoutedEventArgs e) { this.building.HandleKeyPress(4); }
-        private void B3_Click(object sender, RoutedEventArgs e) { this.building.HandleKeyPress(3); }
-        private void B2_Click(object sender, RoutedEventArgs e) { this.building.HandleKeyPress(2); }
-        private void B1_Click(object sender, RoutedEventArgs e) { this.building.HandleKeyPress(1); }
+        private void B6_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(6); }
+        private void B5_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(5); }
+        private void B4_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(4); }
+        private void B3_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(3); }
+        private void B2_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(2); }
+        private void B1_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(1); }
+
+
+        private void B6_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(6); }
+        private void B5_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(5); }
+        private void B4_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(4); }
+        private void B3_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(3); }
+        private void B2_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(2); }
+        private void B1_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(1); }
 
 
     }

@@ -1,0 +1,7 @@
+C:\Users\sekkei23\Documents\Elevator.pdb
+C:\Users\sekkei23\Documents\D3DCompiler_47_cor3.dll
+C:\Users\sekkei23\Documents\PenImc_cor3.dll
+C:\Users\sekkei23\Documents\PresentationNative_cor3.dll
+C:\Users\sekkei23\Documents\vcruntime140_cor3.dll
+C:\Users\sekkei23\Documents\wpfgfx_cor3.dll
+C:\Users\sekkei23\Documents\Elevator.exe
