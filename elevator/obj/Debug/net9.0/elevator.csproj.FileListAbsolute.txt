@@ -13,3 +13,11 @@
 /Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.genruntimeconfig.cache
 /Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/ref/elevator.dll
 /Users/blazingbhavneek/Code/Personal Projects/elevator/elevator/obj/Debug/net9.0/elevator.sourcelink.json
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\elevator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\elevator.AssemblyInfoInputs.cache
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\elevator.AssemblyInfo.cs
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\elevator.csproj.CoreCompileInputs.cache
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\elevator.sourcelink.json
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\elevator.dll
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\refint\elevator.dll
+C:\Code\Elevator-Task\elevator\obj\Debug\net9.0\elevator.pdb
