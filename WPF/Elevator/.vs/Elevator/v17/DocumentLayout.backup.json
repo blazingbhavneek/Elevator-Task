@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{EEED3391-186E-4DB7-B9F9-94DD7068127A}|Elevator\\Elevator.csproj|solutionrelative:elevator\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEED3391-186E-4DB7-B9F9-94DD7068127A}|Elevator\\Elevator.csproj|c:\\code\\elevator-task\\wpf\\elevator\\elevator\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEED3391-186E-4DB7-B9F9-94DD7068127A}|Elevator\\Elevator.csproj|solutionrelative:elevator\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EEED3391-186E-4DB7-B9F9-94DD7068127A}|Elevator\\Elevator.csproj|c:\\code\\elevator-task\\wpf\\elevator\\elevator\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{EEED3391-186E-4DB7-B9F9-94DD7068127A}|Elevator\\Elevator.csproj|solutionrelative:elevator\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEED3391-186E-4DB7-B9F9-94DD7068127A}|Elevator\\Elevator.csproj|c:\\code\\elevator-task\\wpf\\elevator\\elevator\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEED3391-186E-4DB7-B9F9-94DD7068127A}|Elevator\\Elevator.csproj|solutionrelative:elevator\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,13 +26,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Building.cs",
               "DocumentMoniker": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\Building.cs",
               "RelativeDocumentMoniker": "Elevator\\Building.cs",
               "ToolTip": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\Building.cs",
               "RelativeToolTip": "Elevator\\Building.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAQwCcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAcwEAAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-16T04:33:29.513Z",
               "EditorCaption": ""
@@ -45,14 +45,14 @@
               "RelativeDocumentMoniker": "Elevator\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\MainWindow.xaml.cs*",
               "RelativeToolTip": "Elevator\\MainWindow.xaml.cs*",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAACcAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwDkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-16T04:30:04.902Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Code\\Elevator-Task\\WPF\\Elevator\\Elevator\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Elevator\\MainWindow.xaml",
