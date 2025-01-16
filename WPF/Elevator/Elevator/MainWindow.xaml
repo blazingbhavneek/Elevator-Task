@@ -41,7 +41,7 @@
 
             <StackPanel Orientation="Vertical">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button x:Name="B6" Width="40px" Height="60px" Margin="20px" FontSize="30px">6</Button>
+                    <Button x:Name="B6" Click="B6_Click" Width="40px" Height="60px" Margin="20px" FontSize="30px">6</Button>
                     <Label x:Name="I6" BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
                 </StackPanel>
 
