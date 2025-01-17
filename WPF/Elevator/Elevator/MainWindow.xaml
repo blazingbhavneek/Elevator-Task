@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Elevator"
         mc:Ignorable="d"
-        Title="Elevator Simulation" Height="Auto" Width="Auto" WindowStartupLocation="CenterScreen">
+        Title="Bhavneek's Elevator Simulation" Height="Auto" Width="Auto" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>

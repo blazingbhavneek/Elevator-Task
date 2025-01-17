@@ -187,7 +187,7 @@ namespace Elevator
         public MainWindow()
         {
             InitializeComponent();
-            createElevators(5, 5);
+            createElevators(5, 4);
         }
 
 
