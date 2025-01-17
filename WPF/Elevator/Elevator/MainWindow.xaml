@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Elevator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="400">
+        Title="Elevator Simulation" Height="Auto" Width="Auto" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
@@ -31,89 +31,9 @@
     </Window.Resources>
 
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-            <StackPanel Orientation="Vertical">
-                <StackPanel>
-                    <StackPanel Margin="10px" Height="120px" Width="80px" Background="black">
-                        <Label x:Name="currDir" HorizontalContentAlignment="Center" FontSize="32" Foreground="white">↑</Label>
-                        <Label x:Name="currFloor" HorizontalContentAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="white">5</Label>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel x:Name="floorPanel" Orientation="Vertical">
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="B6" Click="B6_Click" Width="40px" Height="60px" Margin="20px" FontSize="30px">6</Button>
-                        <Label x:Name="I6" BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="B5" Click="B5_Click" Width="40px" Height="60px" Margin="20px" FontSize="30px">5</Button>
-                        <Label x:Name="I5" BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="B4" Click="B4_Click" Width="40px" Height="60px" Margin="20px" FontSize="30px">4</Button>
-                        <Label x:Name="I4" BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="B3" Click="B3_Click" Width="40px" Height="60px" Margin="20px" FontSize="30px">3</Button>
-                        <Label x:Name="I3" BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="B2" Click="B2_Click" Width="40px" Height="60px" Margin="20px" FontSize="30px">2</Button>
-                        <Label x:Name="I2" BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="B1" Click="B1_Click" Width="40px" Height="60px" Margin="20px" FontSize="30px">1</Button>
-                        <Label x:Name="I1" BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-                </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="flexGrid" Orientation="Horizontal" HorizontalAlignment="Center" >
             </StackPanel>
-
-
-            <StackPanel Orientation="Vertical">
-                <StackPanel>
-                    <StackPanel Margin="10px" Height="120px" Width="80px" Background="black">
-                        <Label x:Name="currDir2" HorizontalContentAlignment="Center" FontSize="32" Foreground="white">↑</Label>
-                        <Label x:Name="currFloor2" HorizontalContentAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="white">5</Label>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel x:Name="floorPanel2" Orientation="Vertical">
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="B6_Click2" Width="40px" Height="60px" Margin="20px" FontSize="30px">6</Button>
-                        <Label BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="B5_Click2" Width="40px" Height="60px" Margin="20px" FontSize="30px">5</Button>
-                        <Label BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="B4_Click2" Width="40px" Height="60px" Margin="20px" FontSize="30px">4</Button>
-                        <Label BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="B3_Click2" Width="40px" Height="60px" Margin="20px" FontSize="30px">3</Button>
-                        <Label BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="B2_Click2" Width="40px" Height="60px" Margin="20px" FontSize="30px">2</Button>
-                        <Label BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="B1_Click2" Width="40px" Height="60px" Margin="20px" FontSize="30px">1</Button>
-                        <Label BorderBrush="Black" BorderThickness="2px" Width="50px" Height="50px"></Label>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

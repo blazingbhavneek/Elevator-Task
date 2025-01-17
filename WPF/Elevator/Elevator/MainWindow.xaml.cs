@@ -16,29 +16,118 @@ namespace Elevator
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
+    
     public partial class MainWindow : Window
     {
-        Building building1;
-        Building building2;
-        private void Runner(Building building, StackPanel floorPanel, Label currDir, Label currFloor)
+
+
+        public static Tuple<StackPanel, StackPanel, Label, Label> GenerateElevatorUI(int floors, Building building, string columnName)
+        {
+            StackPanel columnPanel = new StackPanel
+            {
+                Orientation = Orientation.Vertical,
+                Margin = new Thickness(10)
+            };
+
+            StackPanel statusPanel = new StackPanel
+            {
+                Height = 120,
+                Width = 80,
+                Background = Brushes.Black,
+                Margin = new Thickness(10)
+            };
+
+            Label currDir = new Label
+            {
+                Name = $"{columnName}_currDir",
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                FontSize = 32,
+                Foreground = Brushes.White,
+                Content = "↑"
+            };
+
+            Label currFloor = new Label
+            {
+                Name = $"{columnName}_currFloor",
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                FontSize = 48,
+                FontWeight = FontWeights.Bold,
+                Foreground = Brushes.White,
+                Content = "1"
+            };
+
+            statusPanel.Children.Add(currDir);
+            statusPanel.Children.Add(currFloor);
+            columnPanel.Children.Add(statusPanel);
+
+            StackPanel floorPanel = new StackPanel
+            {
+                Name = $"{columnName}_floorPanel",
+                Orientation = Orientation.Vertical
+            };
+
+            for (int i = floors; i >= 1; i--)
+            {
+
+                int currentFloor = i;
+                StackPanel floorRow = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+
+                Button floorButton = new Button
+                {
+                    Name = $"{columnName}_B{i}",
+                    Content = i.ToString(),
+                    Width = 40,
+                    Height = 60,
+                    Margin = new Thickness(20),
+                    FontSize = 30
+                };
+
+                floorButton.Click += (sender, e) => building.HandleKeyPress(currentFloor);
+
+                Label floorIndicator = new Label
+                {
+                    Name = $"{columnName}_I{i}",
+                    BorderBrush = Brushes.Black,
+                    BorderThickness = new Thickness(2),
+                    Width = 50,
+                    Height = 50
+                };
+
+                floorRow.Children.Add(floorButton);
+                floorRow.Children.Add(floorIndicator);
+                floorPanel.Children.Add(floorRow);
+            }
+
+            columnPanel.Children.Add(floorPanel);
+            var ret = new Tuple<StackPanel, StackPanel, Label, Label>(columnPanel, floorPanel, currDir, currFloor);
+            return ret;
+        }
+        private void Runner(Building building, StackPanel floorPanelVar, Label currDirVar, Label currFloorVar)
         {
             DispatcherTimer elevatorTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(1)
             };
+
             elevatorTimer.Tick += (s, e) => building.Next();
-            elevatorTimer.Start();
 
             DispatcherTimer displayTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(200)
             };
+
             displayTimer.Tick += (s, e) =>
             {
                 bool dirDisp = false;
-                for (int i = 1; i <= 6; i++)
+                for (int i = 1; i <= building.numFloors; i++)
                 {
-                    var childStackPanel = floorPanel.Children[6 - i] as StackPanel;
+                    var childStackPanel = floorPanelVar.Children[building.numFloors - i] as StackPanel;
                     if (building.floors[i].isTarget)
                     {
                         dirDisp = true;
@@ -65,12 +154,12 @@ namespace Elevator
                     }
                 }
 
-                if (dirDisp && building.elevator.dirUp) currDir.Content = "↑";
-                else if (dirDisp && !building.elevator.dirUp) currDir.Content = "↓";
-                else currDir.Content = "";
-                currFloor.Content = building.elevator.currentFloor.ToString();
+                if (dirDisp && building.elevator.dirUp) currDirVar.Content = "↑";
+                else if (dirDisp && !building.elevator.dirUp) currDirVar.Content = "↓";
+                else currDirVar.Content = "";
+                currFloorVar.Content = building.elevator.currentFloor.ToString();
 
-                var childPanel = floorPanel.Children[6 - building.elevator.currentFloor] as StackPanel;
+                var childPanel = floorPanelVar.Children[building.numFloors - building.elevator.currentFloor] as StackPanel;
                 if (childPanel != null && childPanel.Children.Count > 1)
                 {
                     var label = childPanel.Children[1] as Label;
@@ -81,32 +170,25 @@ namespace Elevator
                 }
 
             };
+            elevatorTimer.Start();
             displayTimer.Start();
+        }
 
+        public void createElevators(int x, int floors)
+        {
+            for (int i = 1; i <= x; i++)
+            {
+                Building building = new Building(floors);
+                var col = GenerateElevatorUI(floors, building, $"col{i}");
+                flexGrid.Children.Add(col.Item1);
+                Runner(building, col.Item2, col.Item3, col.Item4);
+            }
         }
         public MainWindow()
         {
             InitializeComponent();
-            building1 = new Building(6);
-            building2 = new Building(6);
-            Runner(building1, floorPanel, currDir, currFloor);
-            Runner(building2, floorPanel2, currDir2, currFloor2);
+            createElevators(5, 5);
         }
-
-        private void B6_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(6); }
-        private void B5_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(5); }
-        private void B4_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(4); }
-        private void B3_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(3); }
-        private void B2_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(2); }
-        private void B1_Click(object sender, RoutedEventArgs e) { this.building1.HandleKeyPress(1); }
-
-
-        private void B6_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(6); }
-        private void B5_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(5); }
-        private void B4_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(4); }
-        private void B3_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(3); }
-        private void B2_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(2); }
-        private void B1_Click2(object sender, RoutedEventArgs e) { this.building2.HandleKeyPress(1); }
 
 
     }
