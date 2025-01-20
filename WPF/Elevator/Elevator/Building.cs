@@ -74,10 +74,8 @@ namespace Elevator
 
                 if (!nextUp)
                 {
-                    // Switch direction if no targets above
                     elevator.dirUp = false;
 
-                    // Check for targets below immediately
                     for (int i = elevator.currentFloor - 1; i >= 1; i--)
                     {
                         if (floors[i].isTarget)
@@ -89,10 +87,8 @@ namespace Elevator
                     }
                 }
             }
-            // Handle downward movement
             else
             {
-                // Clear the current floor target if it's a stop
                 if (floors[elevator.currentFloor].isTarget)
                 {
                     floors[elevator.currentFloor].isTarget = false;
@@ -112,10 +108,7 @@ namespace Elevator
 
                 if (!nextDown)
                 {
-                    // Switch direction if no targets below
                     elevator.dirUp = true;
-
-                    // Check for targets above immediately
                     for (int i = elevator.currentFloor + 1; i <= numFloors; i++)
                     {
                         if (floors[i].isTarget)

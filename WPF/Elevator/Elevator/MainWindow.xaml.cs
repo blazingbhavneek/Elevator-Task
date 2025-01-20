@@ -214,10 +214,11 @@ namespace Elevator
         }
         public MainWindow()
         {
+            int numFloors = 6;
+            int numElevators = 5;
             InitializeComponent();
-            createElevators(5, 6);
+            Main.Width = 100 * numElevators;
+            createElevators(numElevators, numFloors);
         }
-
-
     }
 }
