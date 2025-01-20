@@ -44,9 +44,9 @@ namespace Elevator
         {
             floors[x].isTarget = true;
         }
-        public void Next()
+        public string Next()
         {
-
+            bool moved = false;
             if (elevator.dirUp)
             {
 
@@ -61,7 +61,7 @@ namespace Elevator
                     if (floors[i].isTarget)
                     {
                         elevator.currentFloor++;
-                        nextUp = true;
+                        nextUp = true; moved = true;
                         break;
                     }
                 }
@@ -84,7 +84,7 @@ namespace Elevator
                     if (floors[i].isTarget)
                     {
                         elevator.currentFloor--;
-                        nextDown = true;
+                        nextDown = true; moved = true;
                         break;
                     }
                 }
@@ -94,6 +94,8 @@ namespace Elevator
                 }
             }
 
+            if (moved) return "Elevator Moved to Floor: " + elevator.currentFloor;
+            return "";
         }
 
     }

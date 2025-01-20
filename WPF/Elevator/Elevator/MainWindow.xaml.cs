@@ -22,28 +22,32 @@ namespace Elevator
     public partial class MainWindow : Window
     {
 
-
+        public void consoleApp(string text)
+        {
+            ConsoleTextBox.AppendText(text + "\n");
+            ConsoleTextBox.ScrollToEnd();
+        }
         public static Tuple<StackPanel, StackPanel, Label, Label> GenerateElevatorUI(int floors, Building building, string columnName)
         {
             StackPanel columnPanel = new StackPanel
             {
                 Orientation = Orientation.Vertical,
-                Margin = new Thickness(10)
+                Margin = new Thickness(1)
             };
 
             StackPanel statusPanel = new StackPanel
             {
-                Height = 120,
-                Width = 80,
+                Height = 60,
+                Width = 40,
                 Background = Brushes.Black,
-                Margin = new Thickness(10)
+                Margin = new Thickness(1)
             };
 
             Label currDir = new Label
             {
                 Name = $"{columnName}_currDir",
                 HorizontalContentAlignment = HorizontalAlignment.Center,
-                FontSize = 32,
+                FontSize = 12,
                 Foreground = Brushes.White,
                 Content = "↑"
             };
@@ -52,7 +56,7 @@ namespace Elevator
             {
                 Name = $"{columnName}_currFloor",
                 HorizontalContentAlignment = HorizontalAlignment.Center,
-                FontSize = 48,
+                FontSize = 18,
                 FontWeight = FontWeights.Bold,
                 Foreground = Brushes.White,
                 Content = "1"
@@ -82,10 +86,10 @@ namespace Elevator
                 {
                     Name = $"{columnName}_B{i}",
                     Content = i.ToString(),
-                    Width = 40,
-                    Height = 60,
-                    Margin = new Thickness(20),
-                    FontSize = 30
+                    Width = 20,
+                    Height = 30,
+                    Margin = new Thickness(5),
+                    FontSize = 18
                 };
 
                 floorButton.Click += (sender, e) => building.HandleKeyPress(currentFloor);
@@ -95,8 +99,8 @@ namespace Elevator
                     Name = $"{columnName}_I{i}",
                     BorderBrush = Brushes.Black,
                     BorderThickness = new Thickness(2),
-                    Width = 50,
-                    Height = 50
+                    Width = 20,
+                    Height = 20
                 };
 
                 floorRow.Children.Add(floorButton);
@@ -110,16 +114,24 @@ namespace Elevator
         }
         private void Runner(Building building, StackPanel floorPanelVar, Label currDirVar, Label currFloorVar)
         {
+
             DispatcherTimer elevatorTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(1)
             };
 
-            elevatorTimer.Tick += (s, e) => building.Next();
+            elevatorTimer.Tick += (s, e) =>
+            {
+                String res = building.Next();
+                if(res != "")
+                {
+                    consoleApp(res);
+                }
+            };
 
             DispatcherTimer displayTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(200)
+                Interval = TimeSpan.FromMilliseconds(50)
             };
 
             displayTimer.Tick += (s, e) =>
@@ -187,7 +199,7 @@ namespace Elevator
         public MainWindow()
         {
             InitializeComponent();
-            createElevators(5, 5);
+            createElevators(1, 6);
         }
 
 

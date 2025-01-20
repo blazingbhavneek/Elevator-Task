@@ -62,7 +62,7 @@ namespace Elevator {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "9.0.1.0")]
         public static void Main() {
-            ElevatorBox.App app = new ElevatorBox.App();
+            Elevator.App app = new Elevator.App();
             app.InitializeComponent();
             app.Run();
         }
