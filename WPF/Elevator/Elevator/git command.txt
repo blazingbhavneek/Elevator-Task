@@ -1,0 +1,4 @@
+git status
+git add --force --ignore-errors .
+git commit -m "commit"
+git push origin main

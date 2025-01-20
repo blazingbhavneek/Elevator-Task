@@ -44,6 +44,8 @@
                          Margin="10"
                          Width="auto"
                          Height="100"
+                         Background="Black"
+                         Foreground="White"
                  />
             </StackPanel>
         </ScrollViewer>
