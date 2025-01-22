@@ -72,8 +72,11 @@ namespace Elevator
         {
             floors[x].isTarget = true;
             lastKeyPress = DateTime.Now;
-            if (this.elevator.currentFloor == x && this.floors[x].isTarget) HighlightButton();
-            this.consoleApp($"[{buildingNum}号機]" + "現在階 < " + "選択[" + x + "]", ConsoleTextBox);
+            if (this.elevator.currentFloor == x && this.floors[x].isTarget) {
+                this.consoleApp($"[{buildingNum}号機]" + x + "階で現在階を" + "選択", ConsoleTextBox);
+                HighlightButton(); 
+            }
+            else this.consoleApp($"[{buildingNum}号機]" + "現在階 < " + "選択[" + x + "]", ConsoleTextBox);
         }
         public string Next()
         {
