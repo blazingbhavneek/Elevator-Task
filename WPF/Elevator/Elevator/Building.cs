@@ -32,6 +32,8 @@ namespace Elevator
         public int numFloors;
         public int buildingNum;
         public bool overrideColor = false;
+        public bool isMoving = false;
+        public DateTime lastKeyPress;
 
         public async void HighlightButton()
         {
@@ -42,7 +44,7 @@ namespace Elevator
         public Building(int numberOfFloors, int buildingNum)
         {
             numFloors = numberOfFloors;
-
+            lastKeyPress = DateTime.Now;
             floors = new Floor[numFloors + 1];
             elevator = new ElevatorBox();
 
@@ -57,11 +59,16 @@ namespace Elevator
         public void HandleKeyPress(int x)
         {
             floors[x].isTarget = true;
-            if(this.elevator.currentFloor==x && this.floors[x].isTarget) HighlightButton();
+            lastKeyPress = DateTime.Now;
+            if (this.elevator.currentFloor==x && this.floors[x].isTarget) HighlightButton();
         }
         public string Next()
         {
             bool moved = false;
+            if((DateTime.Now - this.lastKeyPress).TotalMilliseconds < 500 && !this.isMoving)
+            {
+                return "";
+            }
 
             if (elevator.dirUp)
             {
@@ -131,7 +138,11 @@ namespace Elevator
                 }
             }
 
-            if (moved) return "Elevator #" + buildingNum + " Moved to Floor: " + elevator.currentFloor;
+            if (moved){
+                this.isMoving = true;
+                return DateTime.Now.ToString("HH:mm:ss.fff") + " - Elevator #" + buildingNum + " Moved to Floor: " + elevator.currentFloor; 
+            }
+            this.isMoving = false;
             return "";
         }
 
