@@ -35,9 +35,21 @@ namespace Elevator
         public bool isMoving = false;
         public DateTime lastKeyPress;
 
+        public void consoleApp(string text, TextBox ConsoleTextBox)
+        {
+            ConsoleTextBox.AppendText(text + "\n");
+            if (ConsoleTextBox.LineCount > 20)
+            {
+                var lines = ConsoleTextBox.Text.Split('\n');
+                var newText = string.Join("\n", lines, 1, lines.Length - 1);
+                ConsoleTextBox.Text = newText;
+                ConsoleTextBox.CaretIndex = ConsoleTextBox.Text.Length;
+            }
+            ConsoleTextBox.ScrollToEnd();
+        }
         public async void HighlightButton()
         {
-            overrideColor= true;
+            overrideColor = true;
             await Task.Delay(200);
             overrideColor = false;
         }
@@ -56,16 +68,17 @@ namespace Elevator
             this.buildingNum = buildingNum;
         }
 
-        public void HandleKeyPress(int x)
+        public void HandleKeyPress(int x, TextBox ConsoleTextBox)
         {
             floors[x].isTarget = true;
             lastKeyPress = DateTime.Now;
-            if (this.elevator.currentFloor==x && this.floors[x].isTarget) HighlightButton();
+            if (this.elevator.currentFloor == x && this.floors[x].isTarget) HighlightButton();
+            this.consoleApp($"[{buildingNum}号機]" + "現在階 < " + "選択[" + x + "]", ConsoleTextBox);
         }
         public string Next()
         {
             bool moved = false;
-            if((DateTime.Now - this.lastKeyPress).TotalMilliseconds < 300 && !this.isMoving)
+            if ((DateTime.Now - this.lastKeyPress).TotalMilliseconds < 400 && !this.isMoving)
             {
                 return "";
             }
@@ -138,14 +151,36 @@ namespace Elevator
                 }
             }
 
-            if (moved){
-                this.isMoving = true;
-                return DateTime.Now.ToString("HH:mm:ss.fff") + " - Elevator #" + buildingNum + " Moved to Floor: " + elevator.currentFloor; 
+            if (!moved)
+            {
+                this.isMoving = false;
+                return "";
             }
-            this.isMoving = false;
+
+            string ret = $"[{buildingNum}号機]";
+            this.isMoving = true;
+            if (floors[elevator.currentFloor].isTarget)
+            {
+
+                bool otherTargets = false;
+                for (int i = 1; i <= numFloors; i++)
+                {
+                    if (floors[i].isTarget && i!= elevator.currentFloor)
+                    {
+                        otherTargets = true;
+                    }
+                }
+                ret += $"{elevator.currentFloor}階でエレベーター1000ms停止";
+
+                if (!otherTargets)
+                {
+                    ret += $"\n[{buildingNum}号機]{elevator.currentFloor}階でエレベーター停止";
+                }
+
+                return ret;
+            }
+
             return "";
         }
-
-
     }
 }

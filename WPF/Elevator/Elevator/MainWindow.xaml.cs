@@ -22,11 +22,9 @@ namespace Elevator
     
     public partial class MainWindow : Window
     {
-        public int ConsoleLines = 1;
         public void consoleApp(string text)
         {
-            ConsoleTextBox.AppendText(ConsoleLines + ": " + text + "\n");
-            ConsoleLines++;
+            ConsoleTextBox.AppendText(text + "\n");
             if (ConsoleTextBox.LineCount > 20)
             {
                 var lines = ConsoleTextBox.Text.Split('\n');
@@ -36,7 +34,7 @@ namespace Elevator
             }
             ConsoleTextBox.ScrollToEnd();
         }
-        public static Tuple<StackPanel, StackPanel, Label, Label> GenerateElevatorUI(int floors, Building building, string columnName, int buildingNum)
+        public static Tuple<StackPanel, StackPanel, Label, Label> GenerateElevatorUI(int floors, Building building, string columnName, int buildingNum, TextBox ConsoleTextBox)
         {
             StackPanel columnPanel = new StackPanel
             {
@@ -109,7 +107,10 @@ namespace Elevator
                     FontSize = 18
                 };
 
-                floorButton.Click += (sender, e) => building.HandleKeyPress(currentFloor);
+                floorButton.Click += (sender, e) =>
+                {
+                    building.HandleKeyPress(currentFloor, ConsoleTextBox);
+                };
 
                 Label floorIndicator = new Label
                 {
@@ -224,7 +225,7 @@ namespace Elevator
             for (int i = 1; i <= x; i++)
             {
                 Building building = new Building(floors, i);
-                var col = GenerateElevatorUI(floors, building, $"col{i}", i);
+                var col = GenerateElevatorUI(floors, building, $"col{i}", i, ConsoleTextBox);
                 flexGrid.Children.Add(col.Item1);
                 Runner(building, col.Item2, col.Item3, col.Item4);
             }
