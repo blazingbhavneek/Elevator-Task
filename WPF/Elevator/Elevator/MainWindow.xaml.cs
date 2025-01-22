@@ -39,7 +39,7 @@ namespace Elevator
             StackPanel columnPanel = new StackPanel
             {
                 Orientation = Orientation.Vertical,
-                Margin = new Thickness(1)
+                Margin = new Thickness(20, 10, 20, 10)
             };
 
             StackPanel statusPanel = new StackPanel
@@ -54,7 +54,7 @@ namespace Elevator
             {
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 FontSize = 16,
-                Content = "Elevator \n #" + buildingNum 
+                Content = buildingNum + "号機"
             };
 
             Label currDir = new Label
@@ -175,9 +175,11 @@ namespace Elevator
                     var childStackPanel = floorPanelVar.Children[building.numFloors - i] as StackPanel;
                     if (building.floors[i].isTarget)
                     {
-                        if(building.elevator.dirUp && i>building.elevator.currentFloor) dirDisp = "↑";
-                        else if (!building.elevator.dirUp && i < building.elevator.currentFloor) dirDisp = "↓";
-                        else dirDisp = "";
+                        if(dirDisp=="")
+                        {
+                            if(building.elevator.dirUp && i>building.elevator.currentFloor) dirDisp = "↑";
+                            if(!building.elevator.dirUp && i < building.elevator.currentFloor) dirDisp = "↓";
+                        }
                         if (childStackPanel != null && childStackPanel.Children.Count > 1)
                         {
                             var label = childStackPanel.Children[1] as Label;

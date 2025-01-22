@@ -34,7 +34,7 @@
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <StackPanel>
-                <StackPanel x:Name="flexGrid" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <StackPanel x:Name="flexGrid" Orientation="Horizontal" HorizontalAlignment="Center">
                 </StackPanel>
                 <TextBox x:Name="ConsoleTextBox" 
                          VerticalScrollBarVisibility="Auto"
