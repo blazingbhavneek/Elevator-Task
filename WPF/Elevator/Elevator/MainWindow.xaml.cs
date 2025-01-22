@@ -6,6 +6,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -115,9 +116,24 @@ namespace Elevator
                     Name = $"{columnName}_I{i}",
                     BorderBrush = Brushes.Black,
                     BorderThickness = new Thickness(2),
-                    Width = 20,
-                    Height = 20
+                    Width = 25,
+                    Height = 25,
+                    Background = new RadialGradientBrush
+                        {
+                            GradientStops = new GradientStopCollection
+                        {
+                            new GradientStop(Colors.White, 0.1),
+                            new GradientStop(Colors.Green, 1.0)
+                        }
+                        },
+                    Effect = new DropShadowEffect
+                    {
+                        ShadowDepth = 3,
+                        Color = Colors.Black,
+                        Opacity = 0.5
+                    }
                 };
+
 
                 floorRow.Children.Add(floorButton);
                 floorRow.Children.Add(floorIndicator);

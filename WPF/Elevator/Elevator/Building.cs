@@ -65,7 +65,7 @@ namespace Elevator
         public string Next()
         {
             bool moved = false;
-            if((DateTime.Now - this.lastKeyPress).TotalMilliseconds < 500 && !this.isMoving)
+            if((DateTime.Now - this.lastKeyPress).TotalMilliseconds < 300 && !this.isMoving)
             {
                 return "";
             }
