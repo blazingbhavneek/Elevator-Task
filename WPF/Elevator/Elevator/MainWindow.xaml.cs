@@ -147,18 +147,20 @@ namespace Elevator
 
             DispatcherTimer displayTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(50)
+                Interval = TimeSpan.FromMilliseconds(10)
             };
 
             displayTimer.Tick += (s, e) =>
             {
-                bool dirDisp = false;
+                string dirDisp = "";
                 for (int i = 1; i <= building.numFloors; i++)
                 {
                     var childStackPanel = floorPanelVar.Children[building.numFloors - i] as StackPanel;
                     if (building.floors[i].isTarget)
                     {
-                        dirDisp = true;
+                        if(building.elevator.dirUp && i>building.elevator.currentFloor) dirDisp = "↑";
+                        else if (!building.elevator.dirUp && i < building.elevator.currentFloor) dirDisp = "↓";
+                        else dirDisp = "";
                         if (childStackPanel != null && childStackPanel.Children.Count > 1)
                         {
                             var label = childStackPanel.Children[1] as Label;
@@ -182,9 +184,7 @@ namespace Elevator
                     }
                 }
 
-                if (dirDisp && building.elevator.dirUp) currDirVar.Content = "↑";
-                else if (dirDisp && !building.elevator.dirUp) currDirVar.Content = "↓";
-                else currDirVar.Content = "";
+                currDirVar.Content = dirDisp;
                 currFloorVar.Content = building.elevator.currentFloor.ToString();
 
                 var childPanel = floorPanelVar.Children[building.numFloors - building.elevator.currentFloor] as StackPanel;
@@ -193,7 +193,8 @@ namespace Elevator
                     var label = childPanel.Children[1] as Label;
                     if (label != null)
                     {
-                        label.Background = Brushes.Green;
+                        if(building.floors[building.elevator.currentFloor].isTarget && building.overrideColor) label.Background = Brushes.Yellow;
+                        else label.Background = Brushes.Green;
                     }
                 }
 

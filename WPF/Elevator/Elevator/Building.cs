@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
 
 namespace Elevator
 {
@@ -28,6 +31,14 @@ namespace Elevator
 
         public int numFloors;
         public int buildingNum;
+        public bool overrideColor = false;
+
+        public async void HighlightButton()
+        {
+            overrideColor= true;
+            await Task.Delay(200);
+            overrideColor = false;
+        }
         public Building(int numberOfFloors, int buildingNum)
         {
             numFloors = numberOfFloors;
@@ -46,15 +57,14 @@ namespace Elevator
         public void HandleKeyPress(int x)
         {
             floors[x].isTarget = true;
+            if(this.elevator.currentFloor==x && this.floors[x].isTarget) HighlightButton();
         }
         public string Next()
         {
             bool moved = false;
 
-            // Handle upward movement
             if (elevator.dirUp)
             {
-                // Clear the current floor target if it's a stop
                 if (floors[elevator.currentFloor].isTarget)
                 {
                     floors[elevator.currentFloor].isTarget = false;
